@@ -1,0 +1,124 @@
+.header-bar {
+    /* size */
+    width: 100%;
+    height: max-content;
+    /* design */
+    background-color: #F8ECC1;
+    /* layout */
+    box-sizing: border-box;
+    padding: 10px 25px;
+    /* addition */
+    position: sticky;
+    z-index: 2;
+    top: 0;
+}
+
+.header-brand {
+    /* size */
+    width: max-content;
+    height: max-content;
+    /* layout */
+    align-items: flex-end;
+    justify-content: normal;
+    gap: 0;
+}
+
+.header-brand img {
+    /* size */
+    width: 55px;
+    height: auto;
+}
+
+.header-brand span {
+    /* text style */
+    font-family: Segoe Print;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: #CF6D12;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.header-activity {
+    /* size */
+    width: max-content;
+    height: max-content;
+    /* layout */
+    justify-content: normal;
+    gap: 10px;
+}
+
+.search-box {
+    /* size */
+    width: 550px;
+    height: max-content;
+    /* design */
+    background: #E3E3E3;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    /* layout */
+    justify-content: normal;
+    gap: 0;
+}
+
+.search-box input {
+    /* size */
+    width: 100%;
+    height: max-content;
+    /* design */
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    outline-width: 0;
+    /* layout */
+    padding: 8px 16px;
+    /* text style */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.search-box button {
+    /* size */
+    width: 40px;
+    height: 35px;
+    /* design */
+    background-color: #fdfdfd;
+    border: 0;
+    border-left: 1px solid #000000;
+    border-radius: 0 5px 5px 0;
+    outline-width: 0;
+    /* addition */
+    cursor: pointer;
+    transition: 0.45s;
+}
+
+.search-box button:hover {
+    /* design */
+    background-color: #FCA311;
+}
+
+.header-activity a {
+    /* size */
+    width: 40px;
+    height: 40px;
+    /* design */
+    border-radius: 5px;
+    /* layout */
+    justify-content: center;
+    /* addition */
+    transition: 0.45s;
+    text-decoration: none;
+}
+
+.header-activity a:hover {
+    /* design */
+    background-color: #FCA311;
+}
+
+.header-activity a img {
+    /* size */
+    width: 28px;
+    height: auto;
+}

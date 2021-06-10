@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,800;1,400;1,500&display=swap');
+*{
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Poppins", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.wrapper{
+    width: 1440px;
+    margin: auto;
+    position: relative;
+}  
+.wrapper .logo img{
+    width: 180px;
+    height: 83px;
+    float: left;
+    margin: 2px 5px 0px 5px;
+    padding: 2px 5px 0px 5px;
+}
+.menu{
+    float: right;
+}
+nav{
+    width: 1440px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    line-height: 80px;
+    background: rgba(238, 207, 99, 0.6);
+}
+nav ul{
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+nav ul li{
+    float: left;
+}
+nav ul li a{
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    padding: 0px 15px 0px 15px;
+    text-decoration: none;
+    font-size: 23px;
+}
+nav ul li a:hover{
+    text-decoration: underline;
+}
+
+section{
+    margin: auto;
+    display: flex;
+    margin-bottom: 50px;
+    width: 1440px;
+}
+.kolom{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.h1 .h2{
+    font-family: "Poppins";
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: black;
+    width: 100%;
+    line-height: 50px;
+}
+a.tbl-masuk{
+    background: #FCA311;
+    border-radius: 30px;
+    padding: 5px 20px 5px 20px;
+    color: #fafafa;
+    cursor: pointer;
+    font-weight: bold;
+    height: 50px;
+}
+a.tbl-masuk:hover{
+    text-decoration: none;
+    background-color:#212869;
+}
+a.tbl-telusuri{
+    background: #FCA311;
+    border-radius: 30px;
+    margin-top: 20px;
+    padding: 5px 20px 5px 20px;
+    color: #fafafa;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 23px;
+}
+a.tbl-telusuri:hover{
+    text-decoration: none;
+    background-color:#212869;
+}
+p{
+    margin: 15px 0px 15px 0px;
+    padding: 15px 0px 15px 0px;
+}
+.wrapper .gambar img{
+    width: 600px;
+    height: 600px;
+}
+.wrapper .kolom p{
+    margin-top: 30px;
+    margin-left: 100px;
+}
+.wrapper .kolom h1{
+    margin-left: 100px;
+    font-size: 35px;
+}
+.wrapper .kolom h2{
+    margin-left: 100px;
+    font-size: 35px;
+}
+.wrapper .logo2{
+    margin-left: 90px;
+}
+

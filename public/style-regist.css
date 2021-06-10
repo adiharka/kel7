@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,800;1,400;1,500&display=swap');
+.konten{
+    /* background: #c4c4c4; */
+    width: 900px; 
+    height: 752px; 
+    
+}
+
+.gambar{
+    background: rgba(238, 207, 99, 0.6);
+    width: 707px;
+    height: 752px;
+
+}
+
+.back{
+    display: flex;
+    align-items: center;
+    padding-left: 250px;
+    gap: 10px;
+}
+
+.back img{
+    height:50px;
+    margin-left: 50px;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+}
+
+.gambar img{
+    width: 509px;
+    height: 503px;
+    filter: drop-shadow(5px 10px 40px rgba(143, 143, 143, 0.5));
+    text-align: center;
+    margin-top: 120px;
+    margin-left: 99px;
+}
+
+label{
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 45px;
+}
+input, select{
+    height: 30px;
+    width: 300px;
+    left: 70px;
+    top: 280px;
+    border-radius: 10px;
+    background-color: floralwhite;
+    font-family: "Poppins";
+}
+.input-button input{
+    width: 100px;
+    background-color: #FCA311;
+    color: #FFFFFF;
+    border: #FCA311;
+    height: 35px;
+    border-radius: 20px;
+    font-size: 19px;
+    font-weight: bold;
+}
+/* .primary-button input{
+    height: 35px;
+    width: 150px;
+    left: 522px;
+    top: 823px;   
+    background: #FCA311;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    margin-top: 25px;
+    color: #fafafa;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: "Poppins";
+    font-size: 20px;
+    margin: 5px 0px 5px 0px;
+    padding: 5px 0px 5px 0px;
+    color: #FFFFFF;
+    border: #FCA311;
+    border-radius: 40px;
+    align-items: center;
+} */
+.input-button input:hover{
+    text-decoration: none;
+    background-color: #0047FF;
+}
+.container-child{
+    align-items: center;
+    text-align: center;
+    margin-top: 70px;
+}
+h1{
+    font-family: "Poppins";
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 76px;
+    margin: 0;
+    padding: 0;
+    margin-right: 100px;
+}
+h3{
+    font-family: "Poppins";
+    font-weight: lighter;
+    font-size: 15px;
+    line-height: 5px;
+    padding: 5px 0px 10px 0px;
+    margin: 5px 0px 10px 0px;
+}
+h3 a{
+    color: #0047FF;
+    font-weight: 550;
+    line-height: 20px;
+    font-size: 18px;
+}

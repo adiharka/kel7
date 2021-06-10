@@ -1,0 +1,185 @@
+html body {
+    background-color: #EECF63;
+}
+
+#body-center {
+    /* layout */
+    justify-content: center;
+    gap: 20px;
+}
+
+.header-brand {
+    /* size */
+    width: max-content;
+    height: max-content;
+    /* layout */
+    align-items: flex-end;
+    justify-content: normal;
+    gap: 0;
+}
+
+.header-brand img {
+    /* size */
+    width: 85px;
+    height: auto;
+}
+
+.header-brand span {
+    /* text style */
+    font-family: Segoe Print;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: #CF6D12;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.container {
+    /* size */
+    width: 450px;
+    height: max-content;
+    /* design */
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0px 6px 10px rgba(33, 33, 33, 0.25);
+    /* layout */
+    padding: 20px 30px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.container h1 {
+    /* size */
+    margin: 0;
+    /* text style */
+    text-align: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    color: #000000;
+}
+
+.input-label {
+    /* size */
+    width: 100%;
+    height: max-content;
+    /* layout */
+    align-items: flex-start;
+    justify-content: normal;
+    gap: 5px;
+}
+
+.input-label label {
+    /* text style */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #000000;
+}
+
+.input-label input[type='text'],
+.input-label input[type='password'] {
+    /* size */
+    width: 100%;
+    height: 45px;
+    /* design */
+    background: #E5E5E5;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    outline-width: 0;
+    /* layout */
+    box-sizing: border-box;
+    padding: 6px 12px;
+    /* text style */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #000000;
+    /* addition */
+    transition: 0.35s;
+}
+
+.input-label input[type='text']:focus,
+.input-label input[type='password']:focus {
+    /* design */
+    border: 1px solid rgba(0, 0, 0, 0.85);
+    box-shadow: 0px 7px 20px #FCECD1;
+}
+
+.option-input {
+    /* size */
+    width: 100%;
+    height: max-content;
+}
+
+.input-checkbox {
+    /* size */
+    width: max-content;
+    height: max-content;
+    /* layout */
+    justify-content: normal;
+    gap: 5px;
+}
+
+.input-checkbox input {
+    /* size */
+    width: 16px;
+    height: 16px;
+}
+.input-button input{
+    width: 120px;
+    background-color: #FCA311;
+    color: #FFFFFF;
+    border: #FCA311;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.input-checkbox label,
+.option-input a {
+    /* text style */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    color: #0047FF;
+    /* addition */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.input-checkbox label:hover,
+.option-input a:hover {
+    /* text style  */
+    text-decoration: underline;
+    text-decoration-color: #0047FF;
+}
+
+.container button[type='submit'] {
+    /* size */
+    width: max-content;
+    height: max-content;
+    /* design */
+    background-color: #FDCE81;
+    border: 0;
+    border-radius: 30px;
+    outline-width: 0;
+    /* layout */
+    padding: 10px 25px;
+    /* text style */
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    color: rgba(0, 0, 0, 0.45);
+    /* addition */
+    cursor: pointer;
+    transition: 0.45s;
+}
+
+.container button[type='submit']:hover {
+    /* text style */
+    color: #fdfdfd;
+    /* design */
+    background-color: #FCA311;
+    box-shadow: 0px 6px 10px rgba(33, 33, 33, 0.15);
+}

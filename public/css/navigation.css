@@ -1,0 +1,137 @@
+.container {
+    /* size */
+    width: 100%;
+    height: 100%;
+    max-height: max-content;
+    /* layout */
+    align-items: flex-start;
+    justify-content: normal;
+    gap: 50px;
+}
+
+.nav-side {
+    /* size */
+    width: 200px;
+    height: 100%;
+    /* design */
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+    /* layout */
+    box-sizing: border-box;
+    /* addition */
+    position: sticky;
+    left: 0;
+    top: 75px;
+}
+
+.nav-side form {
+    /* size */
+    width: 100%;
+    height: max-content;
+}
+
+.nav-side form button {
+    /* size */
+    width: 100%;
+    height: 65px;
+    /* design */
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    border-top: 1px solid #CFCACA;
+    outline-width: 0;
+    /* layout */
+    box-sizing: border-box;
+    justify-content: center;
+    gap: 10px;
+    /* text style */
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    /* addition */
+    cursor: pointer;
+    transition: 0.45s;
+}
+
+.nav-side form button img {
+    /* size */
+    width: 20px;
+    height: auto;
+}
+
+.nav-side form button:hover {
+    /* design */
+    background-color: rgba(252, 163, 17, 0.35)
+}
+
+.nav-link {
+    /* size */
+    width: 100%;
+    height: max-content;
+    /* layout */
+    margin-top: 30px;
+    justify-content: normal;
+    gap: 35px;
+}
+
+.profile-user{
+    /* size */
+    width: 100%;
+    height: max-content;
+    /* layout */
+    justify-content: normal;
+    gap: 5px;
+}
+
+.profile-user img {
+    /* size */
+    width: 50px;
+    height: auto;
+    /* design */
+    border-radius: 50px;
+    /* addition */
+    cursor: pointer;
+    transition: 0.35s;
+}
+
+.profile-user img:hover {
+    /* size */
+    width: 65px;
+}
+
+.profile-user h6 {
+    /* size */
+    margin: 0;
+    /* text style */
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-link span, .nav-link a {
+    /* text style */
+    font-style: normal;
+    font-size: 20px;
+}
+
+.nav-link span {
+    /* text style */
+    font-weight: 600;
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-color: #000000;
+}
+
+.nav-link a {
+    /* text style */
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
+
+.nav-link a:hover {
+    /* text style */
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-color: #000000;
+}
