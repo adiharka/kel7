@@ -1,8 +1,11 @@
 @extends('pgw.master')
 
+@section('title')
+<title>Homepage Pesanan</title>
+@endsection
+
 @section('content')
 <script>
-    document.title = 'Homepage Pesanan';
     document.getElementById('pesanan').className = 'active';
 </script>
         <form class="container-child">

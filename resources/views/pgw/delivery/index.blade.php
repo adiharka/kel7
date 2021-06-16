@@ -1,14 +1,19 @@
 @extends('pgw.master')
 
+@section('title')
+<title>Homepage Pengiriman</title>
+@endsection
+
+
 @section('content')
 <script>
-    document.title = 'Homepage Delivery';
     document.getElementById('delivery').className = 'active';
-</script>    
+</script>
         <form class="container-child">
             <div class="title">
                 <h2>Delivery</h2>
             </div>
+            @include('pgw.error')
             <div class="button-add">
                 <a href="pgw - form add delivery.html">
                     <input type="button" value="+ Tambah">
@@ -49,7 +54,7 @@
                                     <input type="button" value="Hapus">
                                 </a>
                             </div>
-                            
+
                         </div>
                     </td>
                 </tr>
@@ -77,7 +82,7 @@
                                     <input type="button" value="Hapus">
                                 </a>
                             </div>
-                            
+
                         </div>
                     </td>
                 </tr>

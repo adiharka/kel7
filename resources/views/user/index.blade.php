@@ -22,7 +22,7 @@
                             <li><a href="{{ route('pgw.pgw.index')}}"class="tbl-masuk">Dashboard Pegawai</a></li>
                             @endif
                          @else
-                         <li><a href="{{ route('login')}}"class="tbl-masuk">DAFTAR</a></li>
+                         <li><a href="{{ route('register')}}"class="tbl-masuk">DAFTAR</a></li>
                          @endif
                     </ul>
                 </div>

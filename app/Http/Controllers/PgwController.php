@@ -11,16 +11,16 @@ use Session;
 
 class PgwController extends Controller
 {
- /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $pegawai = Employee::all();
+        $pegawais = Employee::all();
         $peg = Employee::onlyTrashed()->get();
-        return view('pgw.pgw.index', compact('pegawai', 'peg'));
+        return view('pgw.pgw.index', compact('pegawais', 'peg'));
     }
 
     /**
@@ -57,14 +57,14 @@ class PgwController extends Controller
         $save = $user->save();
 
         $pegawai = new Employee;
-        $pegawai -> user_id = $user -> id;
-        $pegawai -> address = $request -> address;
-        $pegawai -> phone = $request -> telp;
+        $pegawai->user_id = $user->id;
+        $pegawai->address = $request->address;
+        $pegawai->phone = $request->telp;
 
-        $save2 = $pegawai -> save();
+        $save2 = $pegawai->save();
 
 
-        if($save && $save2){
+        if ($save && $save2) {
             Session::flash('success', 'Sukses membuat pegawai');
             return redirect()->route('pgw.pgw.index');
         } else {
@@ -81,7 +81,9 @@ class PgwController extends Controller
      */
     public function show($id)
     {
-        return view('pgw.pgw.show');
+        $pgw = Employee::where('id', $id)->first();
+        $user = User::where('id', $pgw->user_id)->first();
+        return view('pgw.pgw.show', compact('pgw', 'user', 'id'));
     }
 
     /**
@@ -92,7 +94,9 @@ class PgwController extends Controller
      */
     public function edit($id)
     {
-        return view('pgw.pgw.edit');
+        $pgw = Employee::where('id', $id)->first();
+        $user = User::where('id', $pgw->user_id)->first();
+        return view('pgw.pgw.edit', compact('pgw', 'user', 'id'));
     }
 
     /**
@@ -104,7 +108,28 @@ class PgwController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'telp' => 'required',
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        $save = $user->save();
+
+        $pegawai = Employee::find($id);
+        $pegawai->address = $request->address;
+        $pegawai->phone = $request->telp;
+
+        $save2 = $pegawai->save();
+
+        if ($save && $save2) {
+            Session::flash('success', 'Sukses mengedit pegawai');
+            return redirect()->route('pgw.pgw.index');
+        } else {
+            Session::flash('errors', ['' => 'Gagal mengedit pegawai!']);
+            return redirect()->route('pgw.pgw.create');
+        }
     }
 
     /**
@@ -119,14 +144,15 @@ class PgwController extends Controller
         Employee::find($id)->delete();
 
         return redirect()->route('pgw.pgw.index')
-                        ->with('success','Sukses menghapus pegawai');
+            ->with('success', 'Sukses menghapus pegawai');
     }
 
-    public function on($id) {
+    public function on($id)
+    {
         Employee::onlyTrashed()->find($id)->restore();
         User::onlyTrashed(Employee::where('id', $id)->first()->user_id)->restore();
 
         return redirect()->route('pgw.pgw.index')
-        ->with('success','Sukses mengaktifkan pegawai');
+            ->with('success', 'Sukses mengaktifkan pegawai');
     }
 }

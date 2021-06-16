@@ -1,8 +1,7 @@
 @extends('pgw.master')
 
-
 @section('title')
-<title>Restock Produk</title>
+<title>Restock</title>
 @endsection
 
 @section('content')

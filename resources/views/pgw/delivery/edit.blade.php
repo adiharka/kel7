@@ -1,14 +1,19 @@
 @extends('pgw.master')
 
+@section('title')
+<title>Pengiriman</title>
+@endsection
+
+
 @section('content')
 <script>
-    document.title = 'Delivery';
     document.getElementById('delivery').className = 'nav-link active';
 </script>
         <form class="container-child">
             <div class="title">
                 <h2>Edit Delivery</h2>
             </div>
+            @include('pgw.error')
             <div class="form-group">
                 <label>Kode Pesanan</label>
                 <input type="text" name="kodepesanan" id="kodepesanan" required>

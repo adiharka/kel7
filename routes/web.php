@@ -21,11 +21,11 @@ use \App\Http\Controllers\ProductController;
 */
 
 
-Route::get('/', function() {
+Route::get('/', function () {
     return view('user.index');
 })->name('landingpage');
 
-Route::prefix('user')->middleware(['auth','user'])->group(function () {
+Route::prefix('user')->middleware(['auth', 'user'])->group(function () {
     Route::get('/home', function () {
         return view('user.index');
     })->name('userIndex');
@@ -75,7 +75,7 @@ Route::prefix('user')->middleware(['auth','user'])->group(function () {
     });
 });
 
-Route::prefix('pgw')->middleware(['auth','pgw'])->group(function () {
+Route::prefix('pgw')->middleware(['auth', 'pgw'])->group(function () {
     Route::get('/', function () {
         return redirect()->route('pgw.pgw.index');
     })->name('pgwIndex');
@@ -91,10 +91,14 @@ Route::prefix('pgw')->middleware(['auth','pgw'])->group(function () {
     Route::resource('pesanan', PesananController::class)->names('pgw.pesanan');
 
     // RESTOCK
-    Route::resource('restock', RestockController::class)->names('pgw.restock');
+    Route::resource('product/restock', RestockController::class)->names('pgw.restock');
 
     // PRODUCT
     Route::resource('product', ProductController::class)->names('pgw.product');
+    Route::prefix('product')->group(function () {
+        Route::get('/stok', [ProductController::class, 'restock'])->name('pgw.product.stok');
+        Route::put('/stok', [ProductController::class, 'restockUpdate'])->name('pgw.product.restockUpdate');
+    });
 
     Route::get('/login', function () {
         return view('pgw.formlogin');
@@ -107,15 +111,13 @@ Route::prefix('pgw')->middleware(['auth','pgw'])->group(function () {
     Route::get('/login2', function () {
         return view('pgw.login');
     });
-
-
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/logout', function() {
+Route::get('/logout', function () {
     Auth::logout();
     return redirect('/home');
 });

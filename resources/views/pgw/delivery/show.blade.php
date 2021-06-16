@@ -1,14 +1,18 @@
 @extends('pgw.master')
 
+@section('title')
+<title>Detail Pengiriman</title>
+@endsection
+
 @section('content')
 <script>
-    document.title = 'Delivery';
     document.getElementById('delivery').className = 'nav-link active';
 </script>
         <form class="container-child">
             <div class="title">
                 <h2 class="judul">Detail Pengiriman</h2>
             </div>
+            @include('pgw.error')
             <div class="konten">
                 <div class="isi">
                     <div>Tanggal Pesanan  </div>

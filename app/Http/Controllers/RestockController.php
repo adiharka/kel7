@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
+use Session;
 
 class RestockController extends Controller
 {
@@ -13,7 +15,8 @@ class RestockController extends Controller
      */
     public function index()
     {
-        return view('pgw.restock.form');
+        $items = Item::get();
+        return view('pgw.product.restock', compact('items'));
     }
 
     /**
@@ -56,7 +59,7 @@ class RestockController extends Controller
      */
     public function edit($id)
     {
-        return view('pgw.restock.edit');
+        //
     }
 
     /**
@@ -68,7 +71,24 @@ class RestockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'qty' => 'required',
+            'expDate' => 'required',
+        ]);
+
+        $item = Item::find($request->name);
+        $item->amount = $item->amount + $request->qty;
+        $item->exp = $request->expDate;
+        $save = $item->save();
+
+        if ($save) {
+            Session::flash('success', 'Sukses menambah stok');
+            return redirect()->route('pgw.product.index');
+        } else {
+            Session::flash('errors', ['' => 'Gagal menambah stok!']);
+            return redirect()->route('pgw.product.restock');
+        }
     }
 
     /**

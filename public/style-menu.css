@@ -378,7 +378,7 @@ table{
     margin: 0;
     border: #000000;
 }
-/* 
+/*
 .back{
     align-items: center;
 }
@@ -400,4 +400,9 @@ h4{
     font-family: poppins;
     color:#545D71;
     font-size: medium;
+}
+
+a,
+input {
+    cursor:pointer;
 }
