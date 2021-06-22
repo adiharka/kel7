@@ -22,12 +22,14 @@ DB_USERNAME=root
 DB_PASSWORD=  
   
 7. Paste folder vendor dari file sebelumnya ke folder laravel
-8. Buka CMD, pastikan alamat cmd sudah mengarah ke folder laravel
-9. Ketikkan Perintah
+8. Buka folder storage/app , kalau ada folder public dihapus
+9. Buka CMD, pastikan alamat cmd sudah mengarah ke folder laravel
+10. Ketikkan Perintah
 - `php artisan key:generate`          <-- untuk mengisi APP_KEY secara otomatis
+- `php artisan storage:link`          <-- untuk mengeset folder tempat upload foto
 - `php artisan migrate --seed`        <-- untuk mengisi entitas di db
 - `php artisan serve`                 <-- untuk menjalankan server laravel
-10. Buka browser dan ketik alamat localhost:8000/
+12. Buka browser dan ketik alamat localhost:8000/
 
 ## Cara Menjalankan Kembali
 1. Tidak perlu dari awal, cukup jalankan XAMPP dan ketikkan perintah `php artisan serve` pada cmd
