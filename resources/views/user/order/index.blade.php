@@ -5,45 +5,50 @@
     document.title = 'Homepage Order';
     document.getElementById('order').className = 'active';
 </script>
-        <form class="container-child">
+        <form class="container-child" method="POST" action="{{ route('user.order.store') }}">
+            @csrf
             <div class="title">
                 <h2>Order</h2>
             </div>
+            @include('user.error')
             <div class="form-group">
-                <label for="namaPenerima">Nama Penerima</label>
-                <input type="text" placeholder="Nama Lengkap" required>
+                <label for="name">Nama Penerima</label>
+                <input name='name' type="text" placeholder="Nama Lengkap" required>
             </div>
             <div class="form-group">
-                <label for="alamatPenerima">Alamat Lengkap</label>
-                <input type="text" placeholder="Alamat Lengkap beserta kode pos" required>
+                <label for="address">Alamat Lengkap</label>
+                <input name='address' type="text" placeholder="Alamat Lengkap beserta kode pos" required>
             </div>
             <div class="form-group">
-                <label for="nomorTelp">No. Telephone</label>
-                <input type="text" placeholder=" ex : 081234567891" required>
+                <label for="number">No. Telephone</label>
+                <input name="number" type="text" placeholder=" ex : 081234567891" required>
             </div>
             <div class="form-group">
-                <label>Kode Item</label>
-                <input type="text" name="kodeItem" id="kodeItem" placeholder=" Kode Barang" required>
-                <!-- <label>Item</label>
+                <label for="item">Item</label>
                 <select name="item" id="item">
-                    <option>----- Choose Item -----</option>
-                    <option label="Obat demam"></option>
-                    <option label="Obat pilek"></option>
-                    <option label="Obat Keras"></option>
-                    <option label="P3K"></option>
-                </select> -->
+                    <option selected disabled>----- Pilih Obat -----</option>
+                    @forelse ($items as $item)
+                    @if ($item->amount == 0)
+                    <option disabled value="" label="{{ $item->name }} (HABIS)"></option>
+                    @else
+                    <option value="{{ $item->id }}" label="{{ $item->name }} (sisa {{ $item->amount }})"></option>
+                    @endif
+                    @empty
+                    <option disabled value="" label="Tidak ada produk"></option>
+                    @endforelse
+                </select>
             </div>
             <div class="form-group">
-                <label>Qty</label>
-                <input type="number" name="qty" id="qty" placeholder=" Jumlah Barang" required>
+                <label for="qty">Qty</label>
+                <input name="qty" type="number" name="qty" id="qty" placeholder=" Jumlah Barang" required>
             </div>
             <div class="form-group">
                 <label>Jasa Kirim</label>
                 <select name="jasaKirim" id="jasaKirim">
-                    <option>----- Choose Item -----</option>
-                    <option label="J&T"></option>
-                    <option label="JNE"></option>
-                    <option label="Go-Send"></option>
+                    <option selected disabled>----- Pilih Kurir -----</option>
+                    <option value="J&T" label="J&T"></option>
+                    <option value="JNE" label="JNE"></option>
+                    <option value="Go-Send" label="Go-Send"></option>
                 </select>
             </div>
             <!-- <div class="form-group">
@@ -51,7 +56,7 @@
                 <textarea id="notes" name="notes"></textarea>
             </div> -->
             <div class=" form-group primary-button end">
-                <button onclick="location.href='{{ route('user.payment.index')}}'" type="submit">ORDER</button>
+                <button type="submit">ORDER</button>
             </div>
         </form>
         <div class="container-img">

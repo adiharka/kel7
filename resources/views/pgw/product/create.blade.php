@@ -8,7 +8,7 @@
 <script>
     document.getElementById('product').className = 'active';
 </script>
-        <form method="POST" action="{{ route('pgw.product.store') }}" class="container-child">
+        <form method="POST" action="{{ route('pgw.product.store') }}" class="container-child" enctype="multipart/form-data">
             @csrf
             <div class="title">
                 <h2>Add Product</h2>
@@ -30,10 +30,10 @@
                 <label for="expDate">Expired Date</label><br>
                 <input type="date" id="expDate" name="expDate" required>
             </div>
-            {{-- <div class="form-group">
-                <label for="pict">Foto</label><br>
-                <input type="file" id="pict" name="pict" required>
-            </div> --}}
+            <div class="form-group">
+                <label for="image">Foto</label><br>
+                <input type="file" id="image" name="image" required>
+            </div>
             <div class="form-group">
                 <label for="details">Details</label><br>
                 <input type="area" id="details" name="details" placeholder=" Put the details of the product in here" required>

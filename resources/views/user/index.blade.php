@@ -13,7 +13,7 @@
             <div class="logo"><img src="{{ asset('Asset/logo.png')}}" alt=""></div>
                 <div class="menu">
                     <ul>
-                        <li><a href="#dashboar">DASHBOARD</a></li>
+                        <li><a href="#dashboard">DASHBOARD</a></li>
                          <li><a href="">KATALOG</a></li>
                          @if (Auth::check())
                             @if (Auth::user()->role == 'user')

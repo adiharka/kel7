@@ -9,11 +9,18 @@ class Item extends Model
 {
     use HasFactory;
 
-    public function restocks() {
+    public function restocks()
+    {
         return $this->belongsToMany(restock::class);
     }
 
-    public function purchases() {
-        return $this->belongsToMany(purchase::class);
+    public function purchase()
+    {
+        return $this->hasMany(purchase::class);
+    }
+
+    public function image()
+    {
+        return $this->hasOne(image::class);
     }
 }

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Purchase;
+use App\Models\Image;
 use Illuminate\Http\Request;
-use Session;
 
-class DeliveryController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class DeliveryController extends Controller
      */
     public function index()
     {
-        $purchases = Purchase::get();
-        return view('pgw.delivery.index', compact('purchases'));
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class DeliveryController extends Controller
      */
     public function create()
     {
-        return view('pgw.delivery.create');
+        //
     }
 
     /**
@@ -43,59 +41,44 @@ class DeliveryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Image $image)
     {
-        return view('pgw.delivery.show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Image $image)
     {
-        $purchase = Purchase::find($id);
-        return view('pgw.delivery.edit', compact('purchase', 'id'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Image $image)
     {
-        $request->validate([
-            'status' => 'required',
-        ]);
-
-        $pesanan = Purchase::find($id);
-        $pesanan->status = $request->status;
-        $save = $pesanan->save();
-
-        if ($save) {
-            Session::flash('success', 'Sukses update status pengiriman');
-            return redirect()->route('pgw.delivery.index');
-        } else {
-            Session::flash('errors', ['' => 'Gagal update status pengiriman!']);
-            return redirect()->route('pgw.delivery.edit');
-        }
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Image $image)
     {
         //
     }

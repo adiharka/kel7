@@ -26,11 +26,8 @@ class HomeController extends Controller
     {
         if (Auth::check() && Auth::user()->role == 'pgw') {
             return redirect()->route('pgwIndex');
-
-        }  
-        elseif (Auth::check() && Auth::user()->role == 'user') {
-            return redirect()->route('userIndex');
- 
+        } elseif (Auth::check() && Auth::user()->role == 'user') {
+            return redirect()->route('user.product.index');
         } else {
             // Session::flash('error', 'Email atau password salah');
             return redirect()->route('landingpage');

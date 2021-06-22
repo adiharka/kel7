@@ -15,8 +15,19 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->integer('total');
+            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('user_id');
+            $table->string('name');
+            $table->string('address');
+            $table->string('number');
+            $table->string('status')->default('Belum dibayar');
+            $table->integer('qty');
+            $table->string('jasaKirim');
+            $table->boolean('dibayar')->default(0);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 

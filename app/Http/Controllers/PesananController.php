@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Purchase;
+use Session;
 
 class PesananController extends Controller
 {
@@ -13,7 +15,8 @@ class PesananController extends Controller
      */
     public function index()
     {
-        return view('pgw.pesanan.index');
+        $purchases = Purchase::get();
+        return view('pgw.pesanan.index', compact('purchases'));
     }
 
     /**
@@ -45,7 +48,8 @@ class PesananController extends Controller
      */
     public function show($id)
     {
-        return view('pgw.pesanan.show');
+        $purchase = Purchase::find($id);
+        return view('pgw.pesanan.show', compact('purchase'));
     }
 
     /**
@@ -68,7 +72,18 @@ class PesananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pesanan = Purchase::find($id);
+        $pesanan->dibayar = 1;
+        $pesanan->status = "Sudah dibayar";
+        $save = $pesanan->save();
+
+        if ($save) {
+            Session::flash('success', 'Sukses konfirmasi pembayaran');
+            return redirect()->route('pgw.pesanan.index');
+        } else {
+            Session::flash('errors', ['' => 'Gagal konfirmasi pembayaran!']);
+            return redirect()->route('pgw.pesanan.index');
+        }
     }
 
     /**

@@ -1,14 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\PegawaiController;
 use \App\Http\Controllers\LoginController;
 use \App\Http\Controllers\HomeController;
+// PEGAWAI
+use \App\Http\Controllers\PegawaiController;
 use \App\Http\Controllers\PgwController;
 use \App\Http\Controllers\RestockController;
 use \App\Http\Controllers\PesananController;
 use \App\Http\Controllers\DeliveryController;
 use \App\Http\Controllers\ProductController;
+
+use \App\Http\Controllers\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,32 +46,38 @@ Route::prefix('user')->middleware(['auth', 'user'])->group(function () {
     });
 
     Route::get('/', function () {
-        return view('user.user - home page');
+        return redirect()->route('user.product.index');
+        //  view('user.user - home page');
     });
 
     Route::get('/homepage', function () {
         return view('user.user - HOMEPAGE');
     });
 
-    Route::get('/delivery', function () {
-        return view('user.delivery.index');
-    })->name('user.delivery.index');
+    Route::get('/delivery', [User\OrderController::class, 'delivery'])->name('user.delivery.index');
 
     Route::get('/order', function () {
         return view('user.order.index');
     })->name('user.order.index');
 
-    Route::get('/payment', function () {
-        return view('user.payment.index');
-    })->name('user.payment.index');
+    Route::prefix('product')->group(function () {
+        Route::get('/', [User\OrderController::class, 'product'])->name('user.product.index');
+    });
 
-    Route::get('/product', function () {
-        return view('user.product.index');
-    })->name('user.product.index');
+    Route::prefix('payment')->group(function () {
+        Route::get('/', [User\OrderController::class, 'payment'])->name('user.payment.index');
+        Route::put('/{id}', [User\OrderController::class, 'paymentUpdate'])->name('user.payment.update');
+        Route::get('/thanks', [User\OrderController::class, 'paymentAfter'])->name('user.payment.afterform');
+    });
 
-    Route::get('/payment/thanks', function () {
-        return view('user.payment.afterform');
-    })->name('user.payment.afterform');
+    Route::resource('order', User\OrderController::class)->names('user.order');
+    // Route::get('/product', function () {
+    //     return view('user.product.index');
+    // })->name('user.product.index');
+
+    // Route::get('/payment/thanks', function () {
+    //     return view('user.payment.afterform');
+    // })->name('user.payment.afterform');
 
     Route::get('/katalog', function () {
         return view('user.user-katalog');
@@ -77,8 +86,12 @@ Route::prefix('user')->middleware(['auth', 'user'])->group(function () {
 
 Route::prefix('pgw')->middleware(['auth', 'pgw'])->group(function () {
     Route::get('/', function () {
-        return redirect()->route('pgw.pgw.index');
+        return redirect()->route('pgw.product.index');
     })->name('pgwIndex');
+
+    Route::get('/index', function () {
+        return redirect()->route('pgw.product.index');
+    });
 
     // DELIVERY
     Route::resource('delivery', DeliveryController::class)->names('pgw.delivery');
@@ -89,6 +102,10 @@ Route::prefix('pgw')->middleware(['auth', 'pgw'])->group(function () {
 
     // PESANAN
     Route::resource('pesanan', PesananController::class)->names('pgw.pesanan');
+    // Route::prefix('pesanan')->group(function () {
+    //     // Route::get('/', [User\OrderController::class, 'payment'])->name('user.payment.index');
+    //     Route::put('/{id}', [User\PesananController::class, 'paymentUpdate'])->name('pgw.pesanan.update');
+    // });
 
     // RESTOCK
     Route::resource('product/restock', RestockController::class)->names('pgw.restock');
@@ -121,3 +138,8 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect('/home');
 });
+
+
+Route::get('/{any}', function () {
+    return redirect()->route('landingpage');
+})->where('any', '.*');

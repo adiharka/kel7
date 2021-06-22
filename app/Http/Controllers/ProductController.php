@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Image;
 use Session;
+use Storage;
 
 
 class ProductController extends Controller
@@ -59,7 +61,18 @@ class ProductController extends Controller
         $item->detail = $request->details;
         $save = $item->save();
 
-        if ($save) {
+        $image = $request->file('image');
+        $gambar = new Image();
+        $gambar->item_id = $item->id;
+        $gambar->save();
+
+        $name = $gambar->id . '.' . $image->extension();
+        $gambar->name = $name;
+        $path = $image->storeAs('uploads', $name, 'public');
+        $gambar->path = '/storage/' . $path;
+        $saveImg = $gambar->save();
+
+        if ($save && $saveImg) {
             Session::flash('success', 'Sukses membuat pegawai');
             return redirect()->route('pgw.product.index');
         } else {
@@ -112,7 +125,32 @@ class ProductController extends Controller
         $item->exp = $request->exp;
         $save = $item->save();
 
-        if ($save) {
+        $saveImg = 1;
+        if ($request->hasfile('image')) {
+            $image = $request->file('image');
+            $alamat = Image::where('item_id', $id)->get()->map->only(['name']);
+
+            $myFiles = $alamat->pluck('name')->all();
+            foreach ($myFiles as $file) {
+                Storage::disk('public')->delete('uploads/' . $file);
+                error_log($file);
+                error_log(storage_path($file));
+            }
+
+            Image::where('item_id', $id)->delete();
+
+            $gambar = new Image();
+            $gambar->item_id = $item->id;
+            $gambar->save();
+
+            $name = $gambar->id . '.' . $image->extension();
+            $gambar->name = $name;
+            $path = $image->storeAs('uploads', $name, 'public');
+            $gambar->path = '/storage/' . $path;
+            $saveImg = $gambar->save();
+        }
+
+        if ($save && $saveImg) {
             Session::flash('success', 'Sukses mengedit produk');
             return redirect()->route('pgw.product.index');
         } else {
