@@ -94,6 +94,9 @@ class PesananController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Purchase::find($id)->delete();
+
+        return redirect()->route('pgw.delivery.index')
+            ->with('success', 'Sukses menghapus pesanan');
     }
 }

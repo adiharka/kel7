@@ -14,12 +14,7 @@
                 <h2>Delivery</h2>
             </div>
             @include('pgw.error')
-            <div class="button-add">
-                <a href="pgw - form add delivery.html">
-                    <input type="button" value="+ Tambah">
-                </a>
-            </div>
-            <h4>Tabel Order</h4>
+            <h4>Tabel Pengiriman</h4>
             <table border="0" cellpadding="10">
                 <tr align="center" style="background-color: rgba(238, 207, 99, 0.4);">
                     <td><b>Tgl Pesan</b></td>
@@ -27,7 +22,7 @@
                     <td><b>Penerima</b></td>
                     <td><b>Ekspedisi</b></td>
                     <td><b>Status</b></td>
-                    <td><b>Control</b></td>
+                    <td width='310px'><b>Control</b></td>
                 </tr>
                 @forelse ($purchases as $pesanan)
                 <tr>
@@ -45,14 +40,14 @@
                             </div>
                             <div class="button-edit">
                                 <a href="{{ route('pgw.delivery.edit', $pesanan->id) }}">
-                                    <input type="button" value="Edit">
+                                    <input type="button" value="Ganti status">
                                 </a>
                             </div>
-                            <div class="button-delete">
-                                <a href="">
-                                    <input type="button" value="Hapus">
-                                </a>
-                            </div>
+                            <form class="button-delete" action="{{ route('pgw.pesanan.destroy', $pesanan->id) }}" onsubmit="return confirm('Yakin menghapus?')" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="Hapus">
+                            </form>
 
                         </div>
                     </td>
@@ -62,7 +57,4 @@
                 @endforelse
 
         </form>
-        <!-- <div class="container-img">
-            <img src="Asset/Group 2.png" alt="">
-        </div> -->
 @endsection
