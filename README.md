@@ -22,7 +22,7 @@ DB_USERNAME=root
 DB_PASSWORD=  
   
 7. Paste folder vendor dari file sebelumnya ke folder laravel
-8. Buka folder storage/app , kalau ada folder public dihapus
+8. Buka folder public, hapus folder storage jika ada (buat tempat upload foto nantinya)
 9. Buka CMD, pastikan alamat cmd sudah mengarah ke folder laravel
 10. Ketikkan Perintah
 - `php artisan key:generate`          <-- untuk mengisi APP_KEY secara otomatis
