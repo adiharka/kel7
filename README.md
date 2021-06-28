@@ -23,10 +23,11 @@ DB_PASSWORD=
   
 7. Paste folder vendor dari file sebelumnya ke folder laravel
 8. Buka folder public, hapus folder storage jika ada (buat tempat upload foto nantinya)
-9. Buka CMD, pastikan alamat cmd sudah mengarah ke folder laravel
-10. Ketikkan Perintah
+   hapus juga folder public di dalem storage/app
+10. Buka CMD, pastikan alamat cmd sudah mengarah ke folder laravel
+11. Ketikkan Perintah
 - `php artisan key:generate`          <-- untuk mengisi APP_KEY secara otomatis
-- `php artisan storage:link`          <-- untuk mengeset folder tempat upload foto
+- `php artisan storage:link`          <-- untuk mengeset folder tempat upload foto (kalo error buat lagi folder public di dalem storage/app)
 - `php artisan migrate --seed`        <-- untuk mengisi entitas di db
 - `php artisan serve`                 <-- untuk menjalankan server laravel
 12. Buka browser dan ketik alamat localhost:8000/
